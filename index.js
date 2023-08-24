@@ -1,6 +1,18 @@
 const ci = require('miniprogram-ci');
 const { spawn } = require('child_process');
+const minimist = require('minimist');
+const fs = require('fs-extra')
+const hjson = require('hjson');
 
+const wechat = {
+  "dev": "wx858ddde80e1d69ec",
+  "sit": "wx98011a7ed2295c2c",
+  "xe": "wx636b10db5fe7f274",
+}
+console.log("args", "---------------------",process.argv);
+const args = minimist(process.argv.slice(2));
+console.log(args, "arguments")
+const env = args.e;
 
 // package.json 配置获取
 const packageObject = require('./package.json');
@@ -9,9 +21,17 @@ const lastVersion = packageObject.lastVersion;
 
 const compilePath = `e:\\work\\git-refactor\\mini-program`
 const command = 'pnpm.cmd';
-const args = ['xe'];
+const sArgs = [env];
 
-const child = spawn(command, args, { cwd: compilePath });
+// 修改manifest.json中的appid
+const wechatPath = `${compilePath}\\apps\\digital-village\\src\\manifest.json`
+const packageString = fs.readFileSync(`${wechatPath}`,"utf-8").toString();
+let packageJson = hjson.parse(packageString)
+packageJson["mp-weixin"]["appid"]= wechat[`${env}`],
+fs.writeFileSync(`${wechatPath}`, JSON.stringify(packageJson, null, 2))
+
+// 执行编译
+const child = spawn(command, sArgs, { cwd: compilePath });
 child.stdout.on('data', (data) => {
   console.log(`stdout: ${data}`);
 });
@@ -22,10 +42,8 @@ child.stderr.on('data', (data) => {
 
 child.on('close', (code) => {
   console.log(`child process exited with code ${code}`);
-  // compile();
+  compile();
 });
-
-
 
 function getLength(s) {
   const match = s.match(/^(\d+)$/);
@@ -47,10 +65,10 @@ const getFullVersion = () => {
 
 const compile = () => {
   const project = new ci.Project({
-    appid: "wx636b10db5fe7f274",
+    appid: wechat[`${env}`],
     type: "miniProgram",
     projectPath: `${compilePath}\\apps\\digital-village\\dist\\build\\mp-weixin`,
-    privateKeyPath: "private.wx636b10db5fe7f274.key",
+    privateKeyPath: `private.${env}.key`,
     ignores: ['node_modules/**/*'],
   });
   ci.upload(

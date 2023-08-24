@@ -1,18 +1,23 @@
 {
   "name": "mini-deploy",
   "version": "3.0.0",
-  "lastVersion": "20",
+  "lastVersion": "52",
   "description": "",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "execute": "node ./src/index.js"
+    "dev": "node index.js -e dev2",
+    "sit": "node index.js -e sit",
+    "xe": "node index.js -e xe"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "fs-extra": "^11.1.1",
+    "hjson": "^3.2.2",
+    "minimist": "^1.2.8",
     "miniprogram-ci": "^1.9.8"
   }
 }
