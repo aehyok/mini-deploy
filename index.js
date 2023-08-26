@@ -14,10 +14,11 @@ const resetWechatAppid = () => {
 }
 
 const resetProjectLastVersion = () => {
-  const wechatPath = `${global.compilePath}\\package.json`
+  const wechatPath = `${global.compilePath}\\apps\\digital-village\\package.json`
   const packageString = fs.readFileSync(`${wechatPath}`,"utf-8").toString();
   let packageJson = hjson.parse(packageString)
-  packageJson.lastVersion = global.lastVersion;
+  packageJson['lastVersion'] = global.lastVersion;
+  console.log(packageJson, "packageJson version");
   fs.writeFileSync(`${wechatPath}`, JSON.stringify(packageJson, null, 2))
 }
 
@@ -136,6 +137,7 @@ const getFullVersion = () => {
   const packageObject = require('./package.json');
   const version =packageObject.version;
   const lastVersion = packageObject.lastVersion;
+  global.lastVersion = lastVersion;
 
   const length = getLength(lastVersion)
 

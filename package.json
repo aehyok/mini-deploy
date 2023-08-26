@@ -12,7 +12,8 @@
     "sit:upload": "node index.js -e sit -t upload",
     "sit:preview": "node index.js -e sit -t preview",
     "xe:upload": "node index.js -e xe -t upload",
-    "xe:preview": "node index.js -e xe -t preview"
+    "xe:preview": "node index.js -e xe -t preview",
+    "all": "pnpm sit:upload &&  pnpm xe:upload"
   },
   "keywords": [],
   "author": "",
