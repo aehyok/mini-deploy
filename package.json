@@ -1,12 +1,11 @@
 {
   "name": "mini-deploy",
   "version": "3.0.0",
-  "lastVersion": "53",
+  "lastVersion": "54",
   "description": "",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev:upload": "node index.js -e dev2 -t upload",
     "dev:preview": "node index.js -e dev2 -t preview",
     "sit:upload": "node index.js -e sit -t upload",
