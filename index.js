@@ -139,16 +139,22 @@ const getFullVersion = () => {
   const lastVersion = packageObject.lastVersion;
   global.lastVersion = lastVersion;
 
-  const length = getLength(lastVersion)
+  let arrayVersion = lastVersion.split('.');
+  const length = getLength(arrayVersion[0])
 
   let strVersion = ""
   if(length === 2) {
-    strVersion = `0${lastVersion}`
+    strVersion = `0${arrayVersion[0]}`
   }
   else if(length ===1) {
-    strVersion = `00${lastVersion}`
+    strVersion = `00${arrayVersion[0]}`
   }
-  return `${version}.${strVersion}`
+
+  if(arrayVersion.length > 1) {
+    return `${version}.${strVersion}.${arrayVersion[1]}`
+  } else {
+    return `${version}.${strVersion}`
+  }
 }
 
 
