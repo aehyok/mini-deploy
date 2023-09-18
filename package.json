@@ -1,19 +1,19 @@
 {
   "name": "mini-deploy",
   "version": "3.0.0",
-  "lastVersion": "64",
+  "lastVersion": "65.4",
   "description": "",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "dev:upload": "node index.js -e dev -t upload",
+    "dev": "node index.js -e dev -t upload",
     "dev:preview": "node index.js -e dev -t preview",
-    "sit:upload": "node index.js -e sit -t upload",
+    "sit": "node index.js -e sit -t upload",
     "sit:preview": "node index.js -e sit -t preview",
-    "xe:upload": "node index.js -e xe -t upload",
+    "xe": "node index.js -e xe -t upload",
     "xe:preview": "node index.js -e xe -t preview",
-    "ly:upload": "node index.js -e ly -t upload",
-    "all": "pnpm sit:upload && pnpm xe:upload && pnpm ly:upload"
+    "ly": "node index.js -e ly -t upload",
+    "all": "pnpm sit && pnpm xe && pnpm dev"
   },
   "keywords": [],
   "author": "",
