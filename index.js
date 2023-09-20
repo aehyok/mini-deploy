@@ -18,6 +18,7 @@ const resetProjectLastVersion = () => {
   const packageString = fs.readFileSync(`${wechatPath}`,"utf-8").toString();
   let packageJson = hjson.parse(packageString)
   packageJson['lastVersion'] = global.lastVersion;
+  packageJson['version'] = global.currentVersion;
   console.log(packageJson, "packageJson version");
   fs.writeFileSync(`${wechatPath}`, JSON.stringify(packageJson, null, 2))
 }
@@ -138,6 +139,7 @@ const getFullVersion = () => {
   const packageObject = require('./package.json');
   const version =packageObject.version;
   const lastVersion = packageObject.lastVersion;
+  global.currentVersion = version;
   global.lastVersion = lastVersion;
 
   let arrayVersion = lastVersion.split('.');

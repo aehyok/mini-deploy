@@ -1,7 +1,7 @@
 {
   "name": "mini-deploy",
-  "version": "3.0.0",
-  "lastVersion": "65.4",
+  "version": "3.1.0",
+  "lastVersion": "1",
   "description": "",
   "main": "index.js",
   "type": "commonjs",
