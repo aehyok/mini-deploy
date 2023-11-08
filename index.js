@@ -2,25 +2,26 @@ const ci = require('miniprogram-ci');
 const { spawn } = require('child_process');
 const minimist = require('minimist');
 const fs = require('fs-extra')
-const hjson = require('hjson');
+const hjson = require('hjson')
+const dotenv = require('dotenv');
 
+dotenv.config();
+
+console.log(process.env.compilePath, "process.env.compilePath")
 // 修改manifest.json中的appid
 const resetWechatAppid = () => {
-  const wechatPath = `${global.compilePath}\\apps\\digital-village\\src\\manifest.json`
-  const packageString = fs.readFileSync(`${wechatPath}`,"utf-8").toString();
+  const packageString = fs.readFileSync(`${global.manifest}`,"utf-8").toString();
   let packageJson = hjson.parse(packageString)
   packageJson["mp-weixin"]["appid"]= wechat[`${global.environment}`];
-  fs.writeFileSync(`${wechatPath}`, JSON.stringify(packageJson, null, 2));
+  fs.writeFileSync(`${global.manifest}`, JSON.stringify(packageJson, null, 2));
 }
 
 const resetProjectLastVersion = () => {
-  const wechatPath = `${global.compilePath}\\apps\\digital-village\\package.json`
-  const packageString = fs.readFileSync(`${wechatPath}`,"utf-8").toString();
+  const packageString = fs.readFileSync(`${global.packagePath}`,"utf-8").toString();
   let packageJson = hjson.parse(packageString)
   packageJson['lastVersion'] = global.lastVersion;
   packageJson['version'] = global.currentVersion;
-  console.log(packageJson, "packageJson version");
-  fs.writeFileSync(`${wechatPath}`, JSON.stringify(packageJson, null, 2))
+  fs.writeFileSync(`${global.packagePath}`, JSON.stringify(packageJson, null, 2))
 }
 
 const buildMiniProgram = (callback) => {
@@ -91,7 +92,7 @@ const init = () => {
   const project = new ci.Project({
     appid: wechat[`${global.environment}`],
     type: "miniProgram",
-    projectPath: `${global.compilePath}\\apps\\digital-village\\dist\\build\\mp-weixin`,
+    projectPath: `${global.buildPath}`,
     privateKeyPath: `private.${global.environment}.key`,
     // ignores: ['node_modules/**/*'],
   });
@@ -108,11 +109,14 @@ const initWechatConfig = () => {
     "ly": "wxea256481926fa978"
   }
 
-  compilePath = `e:\\work\\git-refactor\\mini-program`
   const command = 'pnpm.cmd';
 
   global.wechat = wechat
-  global.compilePath = compilePath
+  global.compilePath = process.env.compilePath
+
+  global.manifest = `${global.compilePath}${process.env.manifest}`
+  global.packagePath = `${global.compilePath}${process.env.packagePath}`
+  global.buildPath = `${global.compilePath}${process.env.buildPath}`
   global.command = command
   global.version = getFullVersion()
 } 

@@ -1,7 +1,7 @@
 {
   "name": "mini-deploy",
   "version": "3.1.0",
-  "lastVersion": "14",
+  "lastVersion": "19.41",
   "description": "",
   "main": "index.js",
   "type": "commonjs",
@@ -19,6 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.3.1",
     "fs-extra": "^11.1.1",
     "hjson": "^3.2.2",
     "minimist": "^1.2.8",
