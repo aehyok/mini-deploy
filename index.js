@@ -47,6 +47,7 @@ const uploadMiniProgram = () => {
     project: global.project,
     version: global.version,
     desc: `自动化提交发布版本${global.version}`,
+    // robot: 1, // 可考虑随机数字 1-30
     threads: 4, // 并发数，默认为 cpu 数量
     setting: {
       es6: true,     // 对应小程序开发者工具的 "es6 转 es5"
