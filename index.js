@@ -109,7 +109,7 @@ const initWechatConfig = () => {
     "ly": "wxea256481926fa978"
   }
 
-  const command = 'pnpm.cmd';
+  const command = process.platform == "win32" ? 'pnpm.cmd' : "pnpm";
 
   global.wechat = wechat
   global.compilePath = process.env.compilePath
