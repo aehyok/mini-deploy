@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-console.log(process.env.compilePath, "process.env.compilePath")
+console.log(process.env, "process.env.compilePath")
 // 修改manifest.json中的appid
 const resetWechatAppid = () => {
   const packageString = fs.readFileSync(`${global.manifest}`,"utf-8").toString();
