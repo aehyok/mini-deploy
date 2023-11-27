@@ -47,7 +47,7 @@ const uploadMiniProgram = () => {
     project: global.project,
     version: global.version,
     desc: `自动化提交发布版本${global.version}`,
-    // robot: 1, // 可考虑随机数字 1-30
+    robot: (global.robot && global.robot) > 30 ? global.robot % 30 : global.robot, // 可考虑随机数字 1-30
     threads: 4, // 并发数，默认为 cpu 数量
     setting: {
       es6: true,     // 对应小程序开发者工具的 "es6 转 es5"
@@ -158,7 +158,7 @@ const getFullVersion = () => {
   else if(length ===1) {
     strVersion = `00${arrayVersion[0]}`
   }
-
+  global.robot = arrayVersion[0];
   if(arrayVersion.length > 1) {
     return `${version}.${strVersion}.${arrayVersion[1]}`
   } else {
