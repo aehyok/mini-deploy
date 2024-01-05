@@ -107,7 +107,8 @@ const initWechatConfig = () => {
     "dev": "wx858ddde80e1d69ec",
     "sit": "wx98011a7ed2295c2c",
     "xe": "wx636b10db5fe7f274",
-    "ly": "wxea256481926fa978"
+    "ly": "wxea256481926fa978",
+    "lf": "wxb7f809253b94da70"
   }
 
   const command = process.platform == "win32" ? 'pnpm.cmd' : "pnpm";
