@@ -1,7 +1,7 @@
 {
   "name": "mini-deploy",
   "version": "3.1.0",
-  "lastVersion": "44.5",
+  "lastVersion": "44.6",
   "description": "",
   "main": "index.js",
   "type": "commonjs",
@@ -14,7 +14,8 @@
     "xe:preview": "node index.js -e xe -t preview",
     "ly": "node index.js -e ly -t upload",
     "lf": "node index.js -e lf -t upload",
-    "all": "pnpm sit && pnpm xe && pnpm dev && pnpm lf"
+    "ln": "node index.js -e ln -t upload",
+    "all": "pnpm sit && pnpm xe && pnpm dev && pnpm lf && pnpm ln"
   },
   "keywords": [],
   "author": "",
