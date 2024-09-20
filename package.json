@@ -1,7 +1,7 @@
 {
   "name": "mini-deploy",
-  "version": "3.2.2",
-  "lastVersion": "4",
+  "version": "3.2.9",
+  "lastVersion": "1",
   "description": "",
   "main": "index.js",
   "type": "commonjs",
@@ -15,6 +15,7 @@
     "ly": "node index.js -e ly -t upload",
     "lf": "node index.js -e lf -t upload",
     "nx": "node index.js -e nx -t upload",
+    "hf": "node index.js -e hf -t upload",
     "liaoning": "node index.js -e liaoning -t upload",
     "all": "pnpm sit && pnpm xe && pnpm dev && pnpm lf && pnpm nx"
   },

@@ -110,6 +110,7 @@ const initWechatConfig = () => {
     "ly": "wxea256481926fa978",
     "lf": "wxb7f809253b94da70",
     "nx": "wxa8b81bb2dc12a2bc",
+    "hf": "wxe0fe70488f1ab433",
     "liaoning": "wx284d0818b7b55a4b",
   }
 
