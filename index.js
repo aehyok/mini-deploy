@@ -112,7 +112,8 @@ const initWechatConfig = () => {
     "nx": "wxa8b81bb2dc12a2bc",
     "hf": "wxe0fe70488f1ab433",
     "liaoning": "wx284d0818b7b55a4b",
-    "lc": "wx5fd954e63bdeb7bf"
+    "lc": "wx5fd954e63bdeb7bf",
+    "yg": "wxc2b16f79ae4dea5b"
   }
 
   const command = process.platform == "win32" ? 'pnpm.cmd' : "pnpm";
@@ -125,7 +126,7 @@ const initWechatConfig = () => {
   global.buildPath = `${global.compilePath}${process.env.buildPath}`
   global.command = command
   global.version = getFullVersion()
-} 
+}
 
 // 初始化命令行参数
 const initCmdArguments = () => {
