@@ -26,7 +26,7 @@ const resetProjectLastVersion = () => {
 
 const buildMiniProgram = (callback) => {
   const sArgs = [global.environment];
-  const child = spawn(global.command, sArgs, { cwd: global.compilePath });
+  const child = spawn(global.command, sArgs, { cwd: global.compilePath, shell: true });
   child.stdout.on('data', (data) => {
     console.log(`stdout: ${data}`);
   });
